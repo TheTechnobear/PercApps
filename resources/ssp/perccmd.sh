@@ -28,4 +28,4 @@ amixer sset 'High-Pass Filter' off
 export LD_LIBRARY_PATH=.
 
 cd /media/BOOT
-tail -f ./PercCmd
+tail -f | ./PercCmd

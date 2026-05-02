@@ -87,6 +87,7 @@ execute_process(
 if(ER301_VERSION STREQUAL "")
     message(WARNING "er-301: no matching git tag found, FIRMWARE_VERSION will be empty")
 else()
+    string(REGEX REPLACE "^v" "" ER301_VERSION "${ER301_VERSION}")
     message(STATUS "er-301: version ${ER301_VERSION}")
 endif()
 
@@ -157,7 +158,6 @@ add_custom_target(xmx DEPENDS PercCmd_XMX Plugins_XMX TraxHost_XMX er301_XMX)
 #
 #   PercCmd               — launcher executable
 #   TraxHost              — plugin host executable
-#   librtaudio.so         — audio library required by TraxHost
 #   percussa-<pl>.elf     — er-301 Percussa port
 #   plugins/*.so          — all plugin shared objects (flattened)
 #
@@ -196,9 +196,6 @@ foreach(PLATFORM IN ITEMS SSP XMX)
         COMMAND ${CMAKE_COMMAND} -E copy
             ${CMAKE_CURRENT_BINARY_DIR}/TraxHost_${PLATFORM}/TraxHost
             ${ROOT}/TraxHost
-        COMMAND ${CMAKE_COMMAND} -E copy
-            ${CMAKE_CURRENT_BINARY_DIR}/TraxHost_${PLATFORM}/rtaudio/librtaudio.so
-            ${ROOT}/librtaudio.so
 
         # Plugins — glob for all .so files at build time
         COMMAND ${CMAKE_COMMAND}
@@ -209,7 +206,7 @@ foreach(PLATFORM IN ITEMS SSP XMX)
         # er-301 binary
         COMMAND ${CMAKE_COMMAND} -E copy
             ${ER301_BUILD_DIR}/percussa-${PL}/percussa-${PL}.elf
-            ${ROOT}/er301.elf
+            ${ROOT}/er301/er301.elf
 
         # er-301 core mod package → er301/rear/
         COMMAND ${CMAKE_COMMAND}

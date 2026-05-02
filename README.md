@@ -72,11 +72,10 @@ cmake --build build --target check_XMX
 build/image/ssp/          build/image/xmx/
   PercCmd                   PercCmd
   TraxHost                  TraxHost
-  librtaudio.so             librtaudio.so
-  er301.elf                 er301.elf
   plugins/                  plugins/
     *.so                      *.so
   er301/                    er301/
+    er301.elf                 er301.elf
     rear/                     rear/
       core-*.pkg                core-*.pkg
     xroot/                    xroot/
