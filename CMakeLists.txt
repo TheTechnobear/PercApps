@@ -22,6 +22,7 @@ function(add_subproject NAME PLATFORM TOOLCHAIN)
         SOURCE_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/external/${NAME}
         BINARY_DIR  ${CMAKE_CURRENT_BINARY_DIR}/${NAME}_${PLATFORM}
         LOG_DIR     ${LOG_DIR}
+        CMAKE_GENERATOR "Unix Makefiles"
         CMAKE_ARGS
             -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_SOURCE_DIR}/external/${NAME}/${TOOLCHAIN}
             -DCMAKE_BUILD_TYPE=${BUILD_TYPE}
