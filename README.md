@@ -38,16 +38,47 @@ Dependancies : PercCmd
 
 
 
-# using 
-git submodule update --init --recursive  
+# Using
 
-How to build:
-# Configure (only needs to happen once)
+### 1. Clone with all submodules
+
+```bash
+git submodule update --init --recursive
+```
+
+### 2. Configure
+
+```bash
 cmake -B build -DCMAKE_BUILD_TYPE=Release
+```
 
-# Build everything (both platforms)
+### 3. Build
+
+```bash
+# Everything (both platforms)
 cmake --build build
 
-# Or build a single platform
+# Single platform
 cmake --build build --target ssp
 cmake --build build --target xmx
+```
+
+### Build targets
+
+| Target | Description |
+|---|---|
+| `ssp` | All subprojects for SSP |
+| `xmx` | All subprojects for XMX |
+| `PercCmd_SSP` / `PercCmd_XMX` | PercCmd only |
+| `Plugins_SSP` / `Plugins_XMX` | Plugins only |
+| `TraxHost_SSP` / `TraxHost_XMX` | TraxHost only |
+| `er301_SSP` / `er301_XMX` | er-301 all steps |
+| `er301_fftw_SSP` / `er301_fftw_XMX` | er-301 FFTW dependency only |
+| `er301_percussa_SSP` / `er301_percussa_XMX` | er-301 percussa step only |
+| `er301_core_SSP` / `er301_core_XMX` | er-301 core step only |
+
+Individual targets are useful for retrying a failed step without rebuilding everything:
+
+```bash
+cmake --build build --target er301_percussa_SSP
+```
