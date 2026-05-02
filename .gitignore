@@ -1,0 +1,15 @@
+**/.DS_Store
+*.swp
+*.lock
+
+**/build
+**/build.*
+
+**/*.sublime-workspace
+
+**/*.dylib
+**/*.vst3
+
+**/*.zip
+**/tmp/*
+

@@ -1,0 +1,12 @@
+[submodule "external/PercCmd"]
+	path = external/PercCmd
+	url = https://github.com/TheTechnobear/PercCmd
+[submodule "external/TraxHost"]
+	path = external/TraxHost
+	url = https://github.com/TheTechnobear/TraxHost
+[submodule "external/Plugins"]
+	path = external/Plugins
+	url = https://github.com/TheTechnobear/SSP.private
+[submodule "external/er-301"]
+	path = external/er-301
+	url = https://github.com/TheTechnobear/er-301

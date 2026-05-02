@@ -1,0 +1,21 @@
+#!/bin/sh
+
+
+# disable sythor start script
+#mv /etc/init.d/S90synthor /etc/init.d/D90synthor 
+
+cd /media/BOOT
+
+# enable perccmd start script
+mv S80perccmd /etc/init.d/S80perccmd
+
+
+# mv the install script back to it original name
+mv SYNTHOR install
+# reinstate the original name of the SYNTHOR
+mv SYNTHOR.ORIG SYNTHOR
+
+sync 
+sleep 1
+sync
+reboot

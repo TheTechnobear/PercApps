@@ -1,0 +1,17 @@
+{
+	"commands":
+	[
+		{
+			"command": "./Synthor",
+			"directory": "/media/BOOT"
+		},
+		{
+			"command": "./TraxHost",
+			"directory": "/media/BOOT"
+		},
+		{
+			"command": "./er301.elf",
+			"directory": "/media/BOOT/er301"
+		}
+	]
+}

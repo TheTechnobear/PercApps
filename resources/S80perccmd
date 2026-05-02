@@ -1,0 +1,26 @@
+#!/bin/sh
+
+mv /etc/init.d/S90synthor /etc/init.d/D90synthor 
+case "$1" in
+	start)
+		printf "Starting perccmd: "
+		killall -SIGINT PercCmd
+		/media/BOOT/perccmd.sh >/dev/null 2>&1 &
+		[ $? = 0 ] && echo "OK" || echo "FAIL"
+		;;
+	stop)
+		printf "Stopping percmd: "
+		killall -SIGINT PercCmd
+		[ $? = 0 ] && echo "OK" || echo "FAIL"
+		;;
+	restart|reload)
+		$0 stop
+		$0 start
+		;;
+	*)
+		echo "Usage: $0 {start|stop|restart}"
+		exit 1
+esac
+
+exit 0
+
